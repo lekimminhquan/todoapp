@@ -1,0 +1,81 @@
+body{
+    background-color: rgb(191, 191, 255);
+}
+
+.form{
+    background-color: white;
+    border: 2px solid  white;
+    width: 500px;
+    margin: 300px auto;
+    border-radius: 8px;
+    font-family: monospace;
+    position: relative;
+    text-align: right;
+    height: 500px;
+}
+.bodys p {
+    font-size: 20px;
+    font-weight:300;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bodys input{
+    text-align: left;
+    height: 40px;
+    width: 350px;
+    border-radius: 3px;
+    font-family: "Poetsen One", sans-serif;
+}
+.bodys{
+    text-align: center;
+}
+.status{
+    position: relative;
+    font-size: 20px;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(188, 188, 255);
+    top: 30px;
+}
+.status span{
+    padding: 15px;
+}
+.status button{
+    margin-left: 15px;
+}
+.items{
+    position: relative;
+    text-align: right;
+    top:30px;
+}
+
+.items ul{
+    text-align: left;
+    width: 400px;
+}
+.items ul li {
+    list-style-type: none;
+    
+}
+.items ul li p{
+    border-bottom: 2px solid black;
+}
+
+.clearbutton{
+    margin-right: 30px;
+    background-color: rgb(188, 188, 255);
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 0 black;
+}
+
+.clearbutton:active{
+    box-shadow: none;
+    transform: translateY(2px);
+}
