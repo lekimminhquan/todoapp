@@ -5,13 +5,13 @@ body{
 .form{
     background-color: white;
     border: 2px solid  white;
-    width: 500px;
-    margin: 300px auto;
+    width: 600px;
+    margin: 100px auto;
     border-radius: 8px;
     font-family: monospace;
     position: relative;
     text-align: right;
-    height: 500px;
+    height: 800px;
 }
 .bodys p {
     font-size: 20px;
@@ -50,6 +50,7 @@ body{
     position: relative;
     text-align: right;
     top:30px;
+    margin-top: 30px;
 }
 
 .items ul{
@@ -58,13 +59,23 @@ body{
 }
 .items ul li {
     list-style-type: none;
+    display: flex;
     
 }
-.items ul li p{
-    border-bottom: 2px solid black;
+.items ul li input{
+    position: relative;
+    height: 20px;
+    width: 29px;
 }
-
+.items ul li div{
+    position: relative;
+    top:5px;
+}
+.items ul p{
+    border-bottom: 1px solid black;
+}
 .clearbutton{
+    margin-top:20px;
     margin-right: 30px;
     background-color: rgb(188, 188, 255);
     font-family: "Poetsen One", sans-serif;
@@ -72,10 +83,10 @@ body{
     font-style: normal;
     font-size: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 0 black;
+    box-shadow: 0 3px 0 black;
 }
 
 .clearbutton:active{
     box-shadow: none;
-    transform: translateY(2px);
+    transform: translateY(3px);
 }
