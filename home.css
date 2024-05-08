@@ -124,11 +124,11 @@ body{
     color: red;
 }
 
-.firstcome label div input{
+.firstcome label input{
     position: relative;
     text-align: left;
     height: 30px;
-    width: 400px;;
+    width: 393px;;  
     border-radius: 3px;
     font-family: "Poetsen One", sans-serif;
 }
