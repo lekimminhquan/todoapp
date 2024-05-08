@@ -54,7 +54,10 @@ function showTask(){
     
 }
 function Addtask(value){
-    let k = Number(Task.length);
+    if(Task.length == null){
+        Task.length = 0;}
+    let k = Task.length;
+    console.log(k);
     let task ={name:value,status:"TO DO"};
     const list = document.createElement('li');
     list.innerHTML = `<li class="firstcome" id="${value}"> 
