@@ -12,14 +12,29 @@ const Input = document.addEventListener("keypress",(e)=>{
         
     }
 })
-function roles(){
-    const x = document.getElementById('statustask');
-    var i = x.selectedIndex;
-    x.value = x.options[i].value
-    console.log(x.value);
-    
+function roles(name){
+    rol = document.querySelectorAll('.roles');
+    rol.forEach(tasks => {
+        if(tasks.id == name){
+            console.log(name)
+            Task.forEach((todo,id) =>{
+                if(id == name){
+                    todo.status = tasks.value;
+                    localStorage.setItem("todolist",JSON.stringify(Task))
+                    showrol = document.querySelectorAll('.opt')
+                    showrol.forEach(e=>{
+                        if(e.id == name){
+                            if(e.value == todo.status){
+                                e.className= 'selected';
+                            }
+                        }
+                    })
+                }
+            })
+        }
+    })
 
-}
+}   
 
 
 var i = 0;
@@ -33,16 +48,17 @@ function showTask(){
                                 <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
                                 <p class="taskp" id ="${id}">${todo.name}</p>
                                 <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
-                                <select name="statustask" id="statustask" onchange ="roles()">
-                                    <option value="0">TO DO</option>
-                                    <option value="1">IN PROGRESS</option>
-                                    <option value="2">DONE</option>
+                                <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
+                                    <option id="${id}" class="opt" value="todo">TO DO</option>
+                                    <option id="${id}" class="opt" value="inprogress">IN PROGRESS</option>
+                                    <option id="${id}" class="opt" value="done">DONE</option>
                                 </select>
                             </label>
                             <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
                         </li>`
         taskAdd.appendChild(list);
     })
+    roles();
 }
 function Addtask(value){
     let task ={name:value,status:"To Do"};
@@ -52,10 +68,10 @@ function Addtask(value){
                             <input class="inputchecked" type="checkbox" id="${value}" name="${value}">
                             <p class="taskp" id="">${value}</p>
                             <span class="material-symbols-outlined" id=${value} onclick="Edit()">edit</span>
-                            <select id="statustask" onchange ="role()">
-                                <option value="0">TO DO</option>
-                                <option value="1">IN PROGRESS</option>
-                                <option value="2">DONE</option>
+                            <select id="${value}" onchange ="role(${value})" class="roles" value="${task.status}">
+                                <option value="todo">TO DO</option>
+                                <option value="inprogress">IN PROGRESS</option>
+                                <option value="done">DONE</option>
                             </select>
                         </label>
                         <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
@@ -77,8 +93,7 @@ function Checked(){
         let x = JSON.parse(localStorage.getItem('todolist'));
         x.forEach((xs,id) =>{
             if(xs.name == e.id){
-                xs = del(xs)
-                Task.del(xs);
+                Task.splice(xs.id,1);
                 localStorage.setItem("todolist",JSON.stringify(Task));
             }
         })
@@ -90,22 +105,36 @@ function Edit(name){
     console.log(name)
     task.forEach(tasks =>{
         if(tasks.id == name ){
-            let k = tasks.innerText
-            const createip = document.createElement('div');
-            createip.innerHTML = `<input type="text" id="add2" class="add2" value="${k}">`; 
-            tasks.replaceWith(createip);
+            let k = tasks.innerText;
+            const createip = document.createElement('input');
+            createip.className ="add2";
+            createip.id='add2'
+            createip.type ='text';
+            createip.value =k;
+            tasks.parentNode.replaceChild(createip,tasks)
+            let replace = document.querySelector(".add2");
             const Input2 = document.addEventListener("keypress",(e) =>
             {
                 if(e.key == "Enter"){
-                    const createp = document.createElement('p');
-                    createp.innerHTML = `<p class="taskp">minhquan</p>`
+                    const input = document.getElementById('add2').value;
+                    console.log(input);
+                    let createp = document.createElement('p');
+                    createp.className = 'taskp';
+                    createp.innerHTML = input;
+                    
+                    replace.replaceWith(createp);
+                    Task.forEach((todo,id)=>{
+                        if(todo.name == k){
+                            todo.name = input;
+                            console.log(todo.name);
+                            createp.id = id;
+                        }
+                        localStorage.setItem("todolist",JSON.stringify(Task));
+                    })  
                     }
                     
             })
         }
-        
-
-       
     })
     
 
