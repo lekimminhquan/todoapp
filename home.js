@@ -5,8 +5,11 @@ const Input = document.addEventListener("keypress",(e)=>{
         if(valInput != ''){
             Addtask(valInput);
             document.getElementById('add').value ='';
+        }
+        else{
             return 0;
         }
+        
     }
 })
 function roles(name){
@@ -35,9 +38,9 @@ showTask();
 function showTask(){
     Task.forEach((todo,id) => {
         const list = document.createElement('li');
-        list.innerHTML = `<li class="firstcome" id ="${todo.name}" name="${todo.name}"> 
+        list.innerHTML = `<li class="firstcome" id ="${id}" name="${todo.name}"> 
                             <label for="${todo.name}">
-                                <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
+                                <input class="inputchecked" type="checkbox" id="${id}" name="${todo.name}">
                                 <p class="taskp" id ="${id}">${todo.name}</p>
                                 <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
                                 <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
@@ -55,14 +58,13 @@ function showTask(){
 }
 function Addtask(value){
     let k = Task.length;
-    console.log(k);
     let task ={name:value,status:"TO DO"};
     const list = document.createElement('li');
-    list.innerHTML = `<li class="firstcome" id="${value}"> 
+    list.innerHTML = `<li class="firstcome" id="${k}"> 
                         <label for="${value}">
-                            <input class="inputchecked" type="checkbox" id="${value}" name="${value}">
+                            <input class="inputchecked" type="checkbox" id="${k}" name="${value}">
                             <p class="taskp" id="${k}">${value}</p>
-                            <span class="material-symbols-outlined" id=${value} onclick="Edit(${k})" >edit</span>
+                            <span class="material-symbols-outlined" id=${value} onclick="Edit(${k})">edit</span>
                             <select id="${k}" onchange ="roles(${k})" class="roles" value="${k}">
                                 <option id="${k}" class="opt" value="TO DO">TO DO</option>
                                 <option id="${k}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
@@ -84,7 +86,7 @@ function Checked(){
         del.remove()
         let x = JSON.parse(localStorage.getItem('todolist'));
         x.forEach((xs,id) =>{
-            if(xs.name == e.id){
+            if(id == e.id){
                 x.splice(id ,1);
                 localStorage.setItem("todolist",JSON.stringify(x));
             }
@@ -113,11 +115,11 @@ function Edit(name){
                     let createp = document.createElement('p');
                     createp.className = 'taskp';
                     createp.innerHTML = input;
+                    createp.id = name;
                     replace.replaceWith(createp);
                     Task.forEach((todo,id)=>{
                         if(todo.name == k){
                             todo.name = input;
-                            createp.id = id;
                         }
                         localStorage.setItem("todolist",JSON.stringify(Task));
                     })  
