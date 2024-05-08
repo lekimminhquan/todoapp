@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script defer src="home.js"></script>
     <title>TO DO APP</title>
 </head>
@@ -14,13 +15,13 @@
     <div class="form">
         <div class="bodys">
             <p>NEED TO DO</p>
-            <input type="text" placeholder="Add a new task and press 'ENTER'" id="add" value="">
+            <input type="text" placeholder="Add a new task and press 'ENTER'" id="add">
             <div class="status">
                 <span id="All">All</span>
                 <span id="To Do">Pending</span>
                 <span id="In Progress">In Progress</span>
                 <span id="Done">Done</span>
-                <button class="clearbutton">Clear All</button>
+                <button class="clearbutton" onclick="Checked()">Clear</button>
             </div>
             <div class="items">
                 <ul class="ul">
