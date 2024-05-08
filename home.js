@@ -5,11 +5,8 @@ const Input = document.addEventListener("keypress",(e)=>{
         if(valInput != ''){
             Addtask(valInput);
             document.getElementById('add').value ='';
+            return 1;
         }
-        else{
-            return 0;
-        }
-        
     }
 })
 function roles(name){
