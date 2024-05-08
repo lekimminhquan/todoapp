@@ -31,6 +31,9 @@ function roles(name){
 
 var i = 0;
 let Task =JSON.parse(localStorage.getItem('todolist'));
+if(!Task){
+    Task = [];
+}
 showTask();
 function showTask(){
     Task.forEach((todo,id) => {
@@ -54,8 +57,6 @@ function showTask(){
     
 }
 function Addtask(value){
-    if(Task.length == null){
-        Task.length = 0;}
     let k = Task.length;
     console.log(k);
     let task ={name:value,status:"TO DO"};
@@ -74,9 +75,6 @@ function Addtask(value){
                         <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
                     </li>`
     taskAdd.appendChild(list);
-    if(!Task){
-        Task = [];
-    }
     Task.push(task);
     localStorage.setItem("todolist",JSON.stringify(Task));
 }
