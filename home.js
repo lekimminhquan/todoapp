@@ -144,9 +144,9 @@ function Showtasktodo(){
     Task.forEach((todo,id) => {
         if(todo.status == 'TO DO'){
             const list = document.createElement('li');
-            list.innerHTML = `<li class="firstcome" id ="${todo.name}" name="${todo.name}"> 
+            list.innerHTML = `<li class="firstcome" id ="${id}" name="${todo.name}"> 
                                 <label for="${todo.name}">
-                                    <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
+                                    <input class="inputchecked" type="checkbox" id="${id}" name="${todo.name}">
                                     <p class="taskp" id ="${id}">${todo.name}</p>
                                     <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
                                     <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
@@ -167,9 +167,9 @@ function Showtaskinprogess(){
     Task.forEach((todo,id) => {
         if(todo.status == "IN PROGRESS"){
             const list = document.createElement('li');
-            list.innerHTML = `<li class="firstcome" id ="${todo.name}" name="${todo.name}"> 
+            list.innerHTML = `<li class="firstcome" id ="${id}" name="${todo.name}"> 
                                 <label for="${todo.name}">
-                                    <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
+                                    <input class="inputchecked" type="checkbox" id="${id}" name="${todo.name}">
                                     <p class="taskp" id ="${id}">${todo.name}</p>
                                     <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
                                     <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
@@ -189,9 +189,9 @@ function Showtaskdone(){
     Task.forEach((todo,id) => {
         if(todo.status == "DONE"){
             const list = document.createElement('li');
-            list.innerHTML = `<li class="firstcome" id ="${todo.name}" name="${todo.name}"> 
+            list.innerHTML = `<li class="firstcome" id ="${id}" name="${todo.name}"> 
                                 <label for="${todo.name}">
-                                    <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
+                                    <input class="inputchecked" type="checkbox" id="${id}" name="${todo.name}">
                                     <p class="taskp" id ="${id}">${todo.name}</p>
                                     <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
                                     <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
