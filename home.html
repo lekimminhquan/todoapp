@@ -17,10 +17,10 @@
             <p>NEED TO DO</p>
             <input type="text" placeholder="Add a new task and press 'ENTER'" id="add">
             <div class="status">
-                <span id="All">All</span>
-                <span id="To Do">Pending</span>
-                <span id="In Progress">In Progress</span>
-                <span id="Done">Done</span>
+                <span id="ALL" onclick="showlisttask('ALL')">ALL</span>
+                <span id="TO DO" onclick="showlisttask('TO DO')">To Do</span>
+                <span id="IN PROGRESS" onclick="showlisttask('IN PROGRESS')" >In Progressing</span>
+                <span id="DONE" onclick="showlisttask('DONE')">Done</span>
                 <button class="clearbutton" onclick="Checked()">Clear</button>
             </div>
             <div class="items">

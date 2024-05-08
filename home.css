@@ -43,6 +43,13 @@ body{
 }
 .status span{
     padding: 15px;
+    color: #000;
+}
+.active {
+    color: rgb(188, 188, 255);
+}
+.status span:hover{
+    color: rgb(188, 188, 255);
 }
 .status button{
     margin-left: 15px;

@@ -21,14 +21,6 @@ function roles(name){
                 if(id == name){
                     todo.status = tasks.value;
                     localStorage.setItem("todolist",JSON.stringify(Task))
-                    showrol = document.querySelectorAll('.opt')
-                    showrol.forEach(e=>{
-                        if(e.id == name){
-                            if(e.value == todo.status){
-                                e.className= 'selected';
-                            }
-                        }
-                    })
                 }
             })
         }
@@ -49,29 +41,30 @@ function showTask(){
                                 <p class="taskp" id ="${id}">${todo.name}</p>
                                 <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
                                 <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
-                                    <option id="${id}" class="opt" value="todo">TO DO</option>
-                                    <option id="${id}" class="opt" value="inprogress">IN PROGRESS</option>
-                                    <option id="${id}" class="opt" value="done">DONE</option>
+                                    <option id="${id}" class="opt" value="TO DO">TO DO</option>
+                                    <option id="${id}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
+                                    <option id="${id}" class="opt" value="DONE">DONE</option>
                                 </select>
                             </label>
                             <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
                         </li>`
         taskAdd.appendChild(list);
+        showrole(todo.status,id);
     })
-    roles();
+    
 }
 function Addtask(value){
-    let task ={name:value,status:"To Do"};
+    let task ={name:value,status:"TO DO"};
     const list = document.createElement('li');
     list.innerHTML = `<li class="firstcome" id="${value}"> 
                         <label for="${value}">
                             <input class="inputchecked" type="checkbox" id="${value}" name="${value}">
-                            <p class="taskp" id="">${value}</p>
-                            <span class="material-symbols-outlined" id=${value} onclick="Edit()">edit</span>
-                            <select id="${value}" onchange ="role(${value})" class="roles" value="${task.status}">
-                                <option value="todo">TO DO</option>
-                                <option value="inprogress">IN PROGRESS</option>
-                                <option value="done">DONE</option>
+                            <p class="taskp" id="${Task.length }">${value}</p>
+                            <span class="material-symbols-outlined" id=${value} onclick="Edit("${Task.length}")">edit</span>
+                            <select id="${Task.length}" onchange ="roles(${Task.length})" class="roles" value="${task.status}">
+                                <option id="${Task.length }" class="opt" value="TO DO">TO DO</option>
+                                <option id="${Task.length}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
+                                <option id="${Task.length}" class="opt" value="DONE">DONE</option>
                             </select>
                         </label>
                         <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
@@ -91,10 +84,12 @@ function Checked(){
         del = document.getElementById(e.id);
         del.remove()
         let x = JSON.parse(localStorage.getItem('todolist'));
+        console.log(x)
         x.forEach((xs,id) =>{
+            console.log(id)
             if(xs.name == e.id){
-                Task.splice(xs.id,1);
-                localStorage.setItem("todolist",JSON.stringify(Task));
+                x.splice(id ,1);
+                localStorage.setItem("todolist",JSON.stringify(x));
             }
         })
     })
@@ -121,12 +116,10 @@ function Edit(name){
                     let createp = document.createElement('p');
                     createp.className = 'taskp';
                     createp.innerHTML = input;
-                    
                     replace.replaceWith(createp);
                     Task.forEach((todo,id)=>{
                         if(todo.name == k){
                             todo.name = input;
-                            console.log(todo.name);
                             createp.id = id;
                         }
                         localStorage.setItem("todolist",JSON.stringify(Task));
@@ -135,10 +128,109 @@ function Edit(name){
                     
             })
         }
-    })
-    
-
-    
-    
+    })    
 }
 
+function showrole(st,id){
+    const rl = document.querySelectorAll('.opt')
+    rl.forEach(e=>{
+        e.removeAttribute('selected');
+        if(e.value == st && e.id == id){
+           e.selected = true;
+        }
+        
+    })
+}
+function Showtasktodo(){
+    Task.forEach((todo,id) => {
+        if(todo.status == 'TO DO'){
+            const list = document.createElement('li');
+            list.innerHTML = `<li class="firstcome" id ="${todo.name}" name="${todo.name}"> 
+                                <label for="${todo.name}">
+                                    <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
+                                    <p class="taskp" id ="${id}">${todo.name}</p>
+                                    <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
+                                    <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
+                                        <option id="${id}" class="opt" value="TO DO">TO DO</option>
+                                        <option id="${id}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
+                                        <option id="${id}" class="opt" value="DONE">DONE</option>
+                                    </select>
+                                </label>
+                                <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
+                            </li>`
+            taskAdd.appendChild(list);
+            showrole(todo.status,id);
+        }
+    })
+}
+
+function Showtaskinprogess(){
+    Task.forEach((todo,id) => {
+        if(todo.status == "IN PROGRESS"){
+            const list = document.createElement('li');
+            list.innerHTML = `<li class="firstcome" id ="${todo.name}" name="${todo.name}"> 
+                                <label for="${todo.name}">
+                                    <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
+                                    <p class="taskp" id ="${id}">${todo.name}</p>
+                                    <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
+                                    <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
+                                        <option id="${id}" class="opt" value="TO DO">TO DO</option>
+                                        <option id="${id}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
+                                        <option id="${id}" class="opt" value="DONE">DONE</option>
+                                    </select>
+                                </label>
+                                <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
+                            </li>`
+            taskAdd.appendChild(list);
+            showrole(todo.status,id);
+        }
+    })
+}
+function Showtaskdone(){
+    Task.forEach((todo,id) => {
+        if(todo.status == "DONE"){
+            const list = document.createElement('li');
+            list.innerHTML = `<li class="firstcome" id ="${todo.name}" name="${todo.name}"> 
+                                <label for="${todo.name}">
+                                    <input class="inputchecked" type="checkbox" id="${todo.name}" name="${todo.name}">
+                                    <p class="taskp" id ="${id}">${todo.name}</p>
+                                    <span class="material-symbols-outlined" id=${todo.name} onclick="Edit(${id})">edit</span>
+                                    <select name="statustask" id="${id}" onchange ="roles(${id})" class="roles" >
+                                        <option id="${id}" class="opt" value="TO DO">TO DO</option>
+                                        <option id="${id}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
+                                        <option id="${id}" class="opt" value="DONE">DONE</option>
+                                    </select>
+                                </label>
+                                <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
+                            </li>`
+            taskAdd.appendChild(list);
+            showrole(todo.status,id);
+        }
+    })
+}
+function showlisttask(show){
+    const z = document.querySelectorAll('li')
+    z.forEach(e=>{
+        e.remove();
+    })
+    const cle = document.querySelectorAll('span');
+    cle.forEach(e=>{
+        e.style.color = 'black';
+    })
+    const showan = document.getElementById(`${show}`);
+    showan.style.color = 'rgb(188, 188, 255)';
+    switch(show){
+        case 'ALL':
+            showTask();
+            break;
+        case 'TO DO':
+            Showtasktodo();
+            break;
+        case 'IN PROGRESS':
+            Showtaskinprogess();
+            break;
+        case 'DONE':
+            Showtaskdone();
+            break;
+    }
+}
