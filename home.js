@@ -54,17 +54,18 @@ function showTask(){
     
 }
 function Addtask(value){
+    let k = Number(Task.length);
     let task ={name:value,status:"TO DO"};
     const list = document.createElement('li');
     list.innerHTML = `<li class="firstcome" id="${value}"> 
                         <label for="${value}">
                             <input class="inputchecked" type="checkbox" id="${value}" name="${value}">
-                            <p class="taskp" id="${Task.length}">${value}</p>
-                            <span class="material-symbols-outlined" id=${value} onclick="Edit("${Task.length}")">edit</span>
-                            <select id="${Task.length}" onchange ="roles(${Task.length})" class="roles" value="${task.status}">
-                                <option id="${Task.length }" class="opt" value="TO DO">TO DO</option>
-                                <option id="${Task.length}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
-                                <option id="${Task.length}" class="opt" value="DONE">DONE</option>
+                            <p class="taskp" id="${k}">${value}</p>
+                            <span class="material-symbols-outlined" id=${value} onclick="Edit("${k}")">edit</span>
+                            <select id="${k}" onchange ="roles(${k})" class="roles" value="${k}">
+                                <option id="${k}" class="opt" value="TO DO">TO DO</option>
+                                <option id="${k}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
+                                <option id="${k}" class="opt" value="DONE">DONE</option>
                             </select>
                         </label>
                         <p style="border-bottom: 1px solid black; width:50% ; position: relative; margin: 0 auto;"></p>
@@ -84,9 +85,7 @@ function Checked(){
         del = document.getElementById(e.id);
         del.remove()
         let x = JSON.parse(localStorage.getItem('todolist'));
-        console.log(x)
         x.forEach((xs,id) =>{
-            console.log(id)
             if(xs.name == e.id){
                 x.splice(id ,1);
                 localStorage.setItem("todolist",JSON.stringify(x));
