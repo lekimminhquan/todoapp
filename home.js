@@ -59,7 +59,7 @@ function Addtask(value){
     list.innerHTML = `<li class="firstcome" id="${value}"> 
                         <label for="${value}">
                             <input class="inputchecked" type="checkbox" id="${value}" name="${value}">
-                            <p class="taskp" id="${Task.length }">${value}</p>
+                            <p class="taskp" id="${Task.length}">${value}</p>
                             <span class="material-symbols-outlined" id=${value} onclick="Edit("${Task.length}")">edit</span>
                             <select id="${Task.length}" onchange ="roles(${Task.length})" class="roles" value="${task.status}">
                                 <option id="${Task.length }" class="opt" value="TO DO">TO DO</option>
