@@ -5,7 +5,7 @@ const Input = document.addEventListener("keypress",(e)=>{
         if(valInput != ''){
             Addtask(valInput);
             document.getElementById('add').value ='';
-            return 1;
+            return 0;
         }
     }
 })
@@ -62,7 +62,7 @@ function Addtask(value){
                         <label for="${value}">
                             <input class="inputchecked" type="checkbox" id="${value}" name="${value}">
                             <p class="taskp" id="${k}">${value}</p>
-                            <span class="material-symbols-outlined" id=${value} onclick="Edit("${k}")">edit</span>
+                            <span class="material-symbols-outlined" id=${value} onclick="Edit(${k})" >edit</span>
                             <select id="${k}" onchange ="roles(${k})" class="roles" value="${k}">
                                 <option id="${k}" class="opt" value="TO DO">TO DO</option>
                                 <option id="${k}" class="opt" value="IN PROGRESS">IN PROGRESS</option>
